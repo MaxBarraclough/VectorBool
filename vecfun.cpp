@@ -19,13 +19,13 @@ template <typename T> void func(std::vector<T> & vec) {
 int main() {
 
   std::vector<int> intvec;
-  int& intref = intvec.front(); // this is fine
+  int& intref = intvec.front();      // this is fine
 
   std::vector< bool, std::allocator<bool> > badvec;
   badvec.push_back(true);
-  bool& ref1 = badvec.front(); // error! The second template argument doesn't seem to have precented specialisation!
+  bool& ref1 = badvec.front();       // error! The second template argument doesn't seem to have prevented specialisation!
   const bool& ref2 = badvec.front(); // ok
-  // bool&& ref3 = badvec.front(); // ok (in Clang++ 3.4 with C++11 enabled)
+  // bool&& ref3 = badvec.front();   // ok (in Clang++ 3.4 with C++11 enabled)
 
 //  func(badvec);
 
